@@ -10,7 +10,7 @@ class PanelController extends Controller
     protected function panel_home_get() {
         return view("panel.home");
     }
-    protected function panel_invoices_get() {
-        return view("panel.invoices");
+    protected function panel_invoice_get() {
+        return view("panel.invoice");
     }
 }
