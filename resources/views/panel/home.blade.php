@@ -8,10 +8,13 @@
     <title>Page de garde</title>
 </head>
 <body>
-    Salam {{ auth()->user()->name }}
+    Bonjour {{ auth()->user()->name }} voulez-vous vous 
     <a href="{{ route("logout") }}">
-        <button>Déconnexion wola</button>
+        <button>Déconnecter</button>
     </a>
+    <br>Bonjour {{ auth()->user()->name }}
+    <button>Acceder factures</button>
+
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script>
 		let notyf = new Notyf({
