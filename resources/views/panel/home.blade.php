@@ -8,12 +8,12 @@
     <title>Page de garde</title>
 </head>
 <body>
-    Bonjour {{ auth()->user()->name }}, pour vous déconecter cliqué sur le bouton
+    Acceder a vos factures {{ auth()->user()->name }}
+        <button>Vers factures</button>
+    <br>Bonjour {{ auth()->user()->name }}, pour vous déconecter cliqué sur le bouton
     <a href="{{ route("logout") }}">
         <button>Déconnexion </button>
     </a>
-    <br>Acceder a vos factures {{ auth()->user()->name }}
-        <button>Vers factures</button>
     </a>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script>

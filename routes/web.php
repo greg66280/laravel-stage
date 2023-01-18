@@ -33,9 +33,15 @@ Route::group(["prefix" => "auth"], function() {
     Route::post("/register", [AuthController::class, "register_post"])->name("register_post");
 });
 
-Route::group(["prefix" => "panel", "middleware" => "auth"], function() {
+Route::group(["prefix" => "home", "middleware" => "auth"], function() {
 
     // Get routes
     Route::get("/", [PanelController::class, "panel_home_get"])->name("panel_home_get");
 });
+
+Route::group(["prefix" => "invoices", "middleware" => "auth"], function() {
+
+    Route::get("/", [PanelController::class, "panel_invoices_get"])->name("panel_invoices_get");
+});
+
 
