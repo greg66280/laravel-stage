@@ -7,7 +7,7 @@
     <title>facturation ADEO</title>
 
     <!-- All custom css files -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url("css/style.css") }}">
 </head>
 <body>
     <div class="text-center">
@@ -19,13 +19,24 @@
                     <td>ID</td>
                     <td>Nom</td>
                     <td>Note publique</td>
-                    <td>Prix Depart</td>
+                    {{-- <td>Prix Depart</td>
                     <td>TVA</td>
                     <td>Remise en %</td>
                     <td>Prix facture</td>
-                    <td>Statut de la facture</td>
+                    <td>Statut de la facture</td> --}}
                 </tr>
             </thead>
+
+            <tbody>
+                @foreach($filtredInvoices as $invoice)
+                    <tr>
+                        <td>{{ $invoice["id"] }}</td>
+                        <td>{{ $invoice["lines"][0]["desc"] }}</td>
+                        <td>{{ $invoice["note_public"] }}</td>
+
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
 
         <br>Bonjour {{ auth()->user()->name }}, pour vous déconecter cliqué sur le bouton

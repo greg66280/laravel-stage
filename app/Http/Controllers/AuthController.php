@@ -54,11 +54,6 @@ class AuthController extends Controller
         return redirect()->route("login_get")->with("success", "Vous avez bien été déconnecté");
     }
 
-    protected function invoice() {
-        auth()->invoice();
-        return redirect()->route("invoice")->with("success", "Vous avez bien été redirigez vers les factures");
-    }
-
     protected function login_post(Request $request) {
         $request->validate([
             "email" => "required|email",

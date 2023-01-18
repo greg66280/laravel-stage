@@ -27,22 +27,17 @@ Route::group(["prefix" => "auth"], function() {
     Route::get("/login", [AuthController::class, "login_get"])->name("login_get");
     Route::get("/register", [AuthController::class, "register_get"])->name("register_get");
     Route::get("/logout", [AuthController::class, "logout"])->name("logout");
-    Route::get("/invoice", [AuthController::class, "invoice"])->name("invoice");
-
+    
     // Post routes
     Route::post("/login", [AuthController::class, "login_post"])->name("login_post");
     Route::post("/register", [AuthController::class, "register_post"])->name("register_post");
 });
 
 Route::group(["prefix" => "home", "middleware" => "auth"], function() {
-
+    
     // Get routes
     Route::get("/", [PanelController::class, "panel_home_get"])->name("panel_home_get");
-});
-
-Route::group(["prefix" => "invoice", "middleware" => "auth"], function() {
-
-    Route::get("/", [PanelController::class, "panel_invoice_get"])->name("panel_invoices_get");
+    Route::get("/invoice", [PanelController::class, "panel_invoices_get"])->name("panel_invoices_get");
 });
 
 
