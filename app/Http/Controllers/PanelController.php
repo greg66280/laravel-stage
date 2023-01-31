@@ -23,12 +23,6 @@ class PanelController extends Controller
         return view("panel.invoices", compact("filtredInvoices"));
     }
 
-    
-
-
-
-
-
     // Dolibarr functions
     protected function getRequest($url) {
         return Http::withHeaders([
@@ -38,7 +32,7 @@ class PanelController extends Controller
     }
 
     protected function getInvoices() {
-        return $this->getRequest("http://localhost/dolibarr/api/index.php/invoices?sortfield=t.rowid&sortorder=ASC&limit=100");
+        return $this->getRequest("http://localhost/dolibarr/htdocs/api/index.php/invoices?sortfield=t.rowid&sortorder=ASC&limit=100");
 
     }
 }

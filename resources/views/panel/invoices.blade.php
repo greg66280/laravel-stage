@@ -17,13 +17,13 @@
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Nom</td>
-                    <td>Note publique</td>
-                    {{-- <td>Prix Depart</td>
-                    <td>TVA</td>
-                    <td>Remise en %</td>
-                    <td>Prix facture</td>
-                    <td>Statut de la facture</td> --}}
+                    <td>Produit / Service</td>
+                    <td>Description</td>
+                    <td>Prix Unitaire</td>
+                    <td>Quantité</td>
+                    <td>Tva</td>
+                    <td>Prix Total</td>
+                    <td>Statut</td>
                 </tr>
             </thead>
 
@@ -33,6 +33,11 @@
                         <td>{{ $invoice["id"] }}</td>
                         <td>{{ $invoice["lines"][0]["desc"] }}</td>
                         <td>{{ $invoice["note_public"] }}</td>
+                        <td>{{ $invoice["lines"][0]["subprice"]*1 }}</td>
+                        <td>{{ $invoice["lines"][0]["qty"] }}</td>
+                        <td>{{ $invoice["total_tva"]*1 }}</td>
+                        <td>{{ $invoice["total_ttc"]*1 }}</td>
+                        <td>{{ $invoice["status"] }}</td>
 
                     </tr>
                 @endforeach
@@ -42,6 +47,10 @@
         <br>Bonjour {{ auth()->user()->name }}, pour vous déconecter cliqué sur le bouton
             <a href="{{ route("logout") }}">
         <button>Déconnexion </button>
+            </a>
+        <br>Page précedente
+            <a href="{{ route("panel_home_get") }}">
+        <button>Précent </button>
             </a>
     </div>
 </body>
