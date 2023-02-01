@@ -24,6 +24,7 @@
                     <td>Tva</td>
                     <td>Prix Total</td>
                     <td>Statut</td>
+                    <td>Statut</td>
                 </tr>
             </thead>
 
@@ -38,20 +39,34 @@
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
                         <td>{{ $invoice["status"] }}</td>
+                        <td>
+                                        <div class='dropdown'>
+                                            <button class='dropbtn'>status</button>
+                                            <div class='dropdown-content'>
+                                                <input type='hidden' name='id' value='id'>
+                                                <button type='submit' name='draft'>Brouillon</a>
+                                                <button type='submit' name='paid'>Payée</a>
+                                                <button type='submit' name='unpaid'>Impayée</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
 
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <br>Bonjour {{ auth()->user()->name }}, pour vous déconecter cliqué sur le bouton
+        <p class="deco">
             <a href="{{ route("logout") }}">
-        <button>Déconnexion </button>
+            <button>Déconnexion </button>
             </a>
-        <br>Page précedente
+        </p>
+        <p class="previous">
             <a href="{{ route("panel_home_get") }}">
-        <button>Précent </button>
+            <button>Précedent </button>
             </a>
+        </p>
     </div>
 </body>
 </html>
