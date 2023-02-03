@@ -39,18 +39,21 @@
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
                         <td>{{ $invoice["status"] }}</td>
+                        
                         <td>
-                                        <div class='dropdown'>
-                                            <button class='dropbtn'>status</button>
-                                            <div class='dropdown-content'>
-                                                <input type='hidden' name='id' value='id'>
-                                                <button type='submit' name='draft'>Brouillon</a>
-                                                <button type='submit' name='paid'>Payée</a>
-                                                <button type='submit' name='unpaid'>Impayée</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
+                            <form method="POST" action="">
+                                @csrf
+                                <div class='dropdown'>
+                                    <button class='dropbtn'>status</button>
+                                    <div class='dropdown-content'>
+                                        <input type='hidden' name='id' value='id'>
+                                        <button type='submit' name='draft'>Brouillon</a>
+                                        <button type='submit' name='paid'>Payée</a>
+                                        <button type='submit' name='unpaid'>Impayée</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
 
                     </tr>
                 @endforeach

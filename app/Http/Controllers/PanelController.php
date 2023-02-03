@@ -17,7 +17,8 @@ class PanelController extends Controller
         $filtredInvoices = [];
         foreach($invoices as $invoice) {
             if (isset($invoice["lines"][0])) {
-                array_push($filtredInvoices, $invoice);
+                //array_push($filtredInvoices, $invoice);
+                $filtredInvoices[] = $invoice;
             } 
         }
         return view("panel.invoices", compact("filtredInvoices"));
@@ -34,5 +35,9 @@ class PanelController extends Controller
     protected function getInvoices() {
         return $this->getRequest("http://localhost/dolibarr/htdocs/api/index.php/invoices?sortfield=t.rowid&sortorder=ASC&limit=100");
 
+    }
+
+    protected function status(){
+         
     }
 }

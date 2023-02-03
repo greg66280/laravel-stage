@@ -17,6 +17,7 @@ use App\Http\Controllers\PanelController;
 |
 */
 
+
 Route::get('/', function () {
     return redirect()->route("login_get");
 });
@@ -36,8 +37,16 @@ Route::group(["prefix" => "auth"], function() {
 Route::group(["prefix" => "home", "middleware" => "auth"], function() {
     
     // Get routes
-    Route::get("/", [PanelController::class, "panel_home_get"])->name("panel_home_get");
-    Route::get("/invoice", [PanelController::class, "panel_invoices_get"])->name("panel_invoices_get");
+    //Route::get("/", [PanelController::class, "panel_home_get"])->name("panel_home_get");
+
+    //Route::get("/invoice", [PanelController::class, "panel_invoices_get"])->name("panel_invoices_get");
+    Route::controller(PanelController::class)->group(function () {
+        Route::get('/', 'panel_home_get')->name("panel_home_get");
+        Route::get('/invoice', 'panel_invoices_get')->name("panel_invoices_get");
+        Route::post('/invoice', 'status');
+    });
+
+    
 });
 
 
