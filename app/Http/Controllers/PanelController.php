@@ -38,6 +38,6 @@ class PanelController extends Controller
     }
 
     protected function status(){
-         
+        var_dump('salut');
     }
 }
