@@ -26,4 +26,30 @@ class User extends Authenticatable
     public static function hasUser($email) {
         return self::where("email", $email)->first();
     }
+
+    public static function getInvoiceStatus($status) {
+        $message = "";
+        switch ($status) {
+            case 0: {
+                $message = "Brouillon";
+                break;
+            }
+
+            case 1: {
+                $message = "Impayée";
+                break;
+            }
+            
+            case 2: {
+                $message = "Payée / Payée partiellement";
+                break;
+            }
+
+            default: {
+                $message = "Statut inconnu";
+                break;
+            }
+        }
+        return $message;
+    }
 }

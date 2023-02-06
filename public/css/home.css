@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+.factures {
+    float: right;
+    
+}
+.deco {
+    float: left;
+    
+}
+img {
+    float: right;
+    width: 250px;
+}

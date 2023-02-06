@@ -38,18 +38,19 @@
                         <td>{{ $invoice["lines"][0]["qty"] }}</td>
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
-                        <td>{{ $invoice["status"] }}</td>
+                        <td>{{ \App\Models\User::getInvoiceStatus($invoice["status"]) }}</td>
                         
                         <td>
                             <form method="POST" action="">
                                 @csrf
+                                @method("POST")
                                 <div class='dropdown'>
                                     <button class='dropbtn'>status</button>
                                     <div class='dropdown-content'>
-                                        <input type='hidden' name='id' value='id'>
-                                        <button type='submit' name='draft'>Brouillon</a>
-                                        <button type='submit' name='paid'>Payée</a>
-                                        <button type='submit' name='unpaid'>Impayée</a>
+                                        <input type='hidden' name='id' value='{{ $invoice["id"] }}'>
+                                        <button type='submit' name='status' value='draft'>Brouillon</a>
+                                        <button type='submit'  name="status" value='paid'>Payée</a>
+                                        <button type='submit' name="status" value='unpaid'>Impayée</a>
                                     </div>
                                 </div>
                             </form>

@@ -32,12 +32,37 @@ class PanelController extends Controller
         ])->get($url)->json();
     }
 
+    protected function postRequest($url) {
+        return Http::withHeaders([
+            "Content-Type" => "application/json",
+            "DOLAPIKEY" => env("DOLAPIKEY")
+        ])->post($url)->json();
+    }
+
     protected function getInvoices() {
         return $this->getRequest("http://localhost/dolibarr/htdocs/api/index.php/invoices?sortfield=t.rowid&sortorder=ASC&limit=100");
 
     }
 
-    protected function status(){
-        var_dump('salut');
+    protected function status(Request $request) {
+        $datas = $request->except(["_method", "_token"]);
+        switch($datas["status"]) {
+            case "draft": {
+                $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settodraft";
+                break;
+            }
+
+            case "paid": {
+                $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settopaid";
+                break;
+            }
+
+            case "unpaid": {
+                $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settounpaid";
+                break;
+            }
+        }
+        $this->postRequest($url);
+        return redirect()->back();
     }
 }
