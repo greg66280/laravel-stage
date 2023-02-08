@@ -60,10 +60,14 @@
     background-color: #3e8e41;
   }
   .deco {
-      float: right;
+    float: right;
       
+  }
+  .tiers {
+    float: center;
   }
   .previous {
     float: left;
   }
+  
     

@@ -44,6 +44,7 @@ Route::group(["prefix" => "home", "middleware" => "auth"], function() {
         Route::get('/', 'panel_home_get')->name("panel_home_get");
         Route::get('/invoice', 'panel_invoices_get')->name("panel_invoices_get");
         Route::post('/invoice', 'status');
+        Route::get('/invoice/tiers', 'panel_tiers_get')->name("panel_tiers_get");
     });
 
     

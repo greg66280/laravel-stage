@@ -24,7 +24,6 @@
                     <td>Tva</td>
                     <td>Prix Total</td>
                     <td>Statut</td>
-                    <td>Statut</td>
                 </tr>
             </thead>
 
@@ -38,19 +37,19 @@
                         <td>{{ $invoice["lines"][0]["qty"] }}</td>
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
-                        <td>{{ \App\Models\User::getInvoiceStatus($invoice["status"]) }}</td>
-                        
+
                         <td>
                             <form method="POST" action="">
                                 @csrf
                                 @method("POST")
                                 <div class='dropdown'>
-                                    <button class='dropbtn'>status</button>
+                                    <button class='dropbtn'>{{ \App\Models\User::getInvoiceStatus($invoice["status"]) }}</button>
                                     <div class='dropdown-content'>
                                         <input type='hidden' name='id' value='{{ $invoice["id"] }}'>
                                         <button type='submit' name='status' value='draft'>Brouillon</a>
-                                        <button type='submit'  name="status" value='paid'>Payée</a>
                                         <button type='submit' name="status" value='unpaid'>Impayée</a>
+                                        <button type='submit'  name="status" value='paid'>Payée</a>
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -60,6 +59,8 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+    
 
         <p class="deco">
             <a href="{{ route("logout") }}">
@@ -69,6 +70,11 @@
         <p class="previous">
             <a href="{{ route("panel_home_get") }}">
             <button>Précedent </button>
+            </a>
+        </p>
+        <p class="tiers">
+            <a href="{{ route("panel_tiers_get") }}">
+            <button>Vers les tiers </button>
             </a>
         </p>
     </div>

@@ -12,6 +12,10 @@ class PanelController extends Controller
         return view("panel.home");
     }
 
+    protected function panel_tiers_get() {
+        return view("panel.tiers");
+    }
+
     protected function panel_invoices_get() {
         $invoices = $this->getInvoices();
         $filtredInvoices = [];
@@ -33,22 +37,35 @@ class PanelController extends Controller
     }
 
     protected function postRequest($url) {
+        
         return Http::withHeaders([
             "Content-Type" => "application/json",
             "DOLAPIKEY" => env("DOLAPIKEY")
-        ])->post($url)->json();
+        ])->post($url,["idwarehouse"=> 0])->json();
     }
 
     protected function getInvoices() {
         return $this->getRequest("http://localhost/dolibarr/htdocs/api/index.php/invoices?sortfield=t.rowid&sortorder=ASC&limit=100");
 
-    }
+        if(is_null($raw)){
+            exit("l'api me retourne NULLL");
+        }
 
+        return $raw;
+    }
+    
+    
     protected function status(Request $request) {
         $datas = $request->except(["_method", "_token"]);
+
+        //dd($datas);
         switch($datas["status"]) {
             case "draft": {
                 $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settodraft";
+                break;
+            }
+            case "unpaid": {
+                $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settounpaid";
                 break;
             }
 
@@ -57,11 +74,8 @@ class PanelController extends Controller
                 break;
             }
 
-            case "unpaid": {
-                $url = "http://localhost/dolibarr/htdocs/api/index.php/invoices/{$datas['id']}/settounpaid";
-                break;
-            }
         }
+
         $this->postRequest($url);
         return redirect()->back();
     }
