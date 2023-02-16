@@ -23,7 +23,9 @@
                     <td>Quantité</td>
                     <td>Tva</td>
                     <td>Prix Total</td>
+                    <td>Nom du tier</td>
                     <td>Statut</td>
+                    <td>Redirection PDF</td>
                 </tr>
             </thead>
 
@@ -37,6 +39,8 @@
                         <td>{{ $invoice["lines"][0]["qty"] }}</td>
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
+                        <td>{{ $invoice["socid"] }}</td>
+                        
 
                         <td>
                             <form method="POST" action="">
@@ -54,13 +58,19 @@
                                 </div>
                             </form>
                         </td>
+                        <td>
+                                <div class='dropdown'>
+                                    <a href="{{ route("panel_pdf_get") }}">
+                                    <button class='dropbtnPDF'>Format Pdf </button>
+                                </div>
+                            </form>
+                        </td>
+                            
 
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <br>
-    
 
         <p class="deco">
             <a href="{{ route("logout") }}">

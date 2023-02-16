@@ -12,20 +12,38 @@ class PanelController extends Controller
         return view("panel.home");
     }
 
-    protected function panel_tiers_get() {
-        return view("panel.tiers");
-    }
 
     protected function panel_invoices_get() {
         $invoices = $this->getInvoices();
         $filtredInvoices = [];
         foreach($invoices as $invoice) {
             if (isset($invoice["lines"][0])) {
-                //array_push($filtredInvoices, $invoice);
                 $filtredInvoices[] = $invoice;
             } 
         }
         return view("panel.invoices", compact("filtredInvoices"));
+    }
+
+    protected function panel_tiers_get() {
+        $invoices = $this->getInvoices();
+        $filtredInvoices = [];
+        foreach($invoices as $invoice) {
+            if (isset($invoice["lines"][0])) {
+                array_push($filtredInvoices, $invoice);
+            } 
+        }
+        return view("panel.tiers",compact("filtredInvoices"));
+    }
+
+    protected function panel_pdf_get() {
+        $invoices = $this->getInvoices();
+        $filtredInvoices = [];
+        foreach($invoices as $invoice) {
+            if (isset($invoice["lines"][0])) {
+                array_push($filtredInvoices, $invoice);
+            } 
+        }
+        return view("panel.pdf",compact("filtredInvoices"));
     }
 
     // Dolibarr functions
@@ -75,7 +93,6 @@ class PanelController extends Controller
             }
 
         }
-
         $this->postRequest($url);
         return redirect()->back();
     }
