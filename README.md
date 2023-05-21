@@ -54,4 +54,8 @@ Et pour finir vous aurrez access a la liste des tiers via leurs id
 
       - Diagramme de classe 
 
+![Image annexe](/public/img/diagramme.PNG)
+
+
+
 
