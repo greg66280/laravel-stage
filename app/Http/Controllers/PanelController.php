@@ -32,7 +32,6 @@ class PanelController extends Controller
                 array_push($filtredInvoices, $invoice);
             } 
         }
-        dd($filtredInvoices);
         return view("panel.tiers",compact("filtredInvoices"));
     }
 

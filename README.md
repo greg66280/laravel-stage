@@ -22,58 +22,32 @@ L’application Dolibou est :
 
 ## Notre guide d'utilisation de notre site matete : 
 Tout d'abord vous allez attérir sur la page d'accueil qui sera constituer d'une partie connexion / incription
-avec pour l'inscription quelques spécificitée comme la taille du mot de passe ou le fait de mettre une adresse mail valide
+avec pour l'inscription quelques spécificitée comme la taille du mot de passe ou le fait de mettre une adresse mail valide.
+Vous pourrez ensuite voir toutes les factures ainsi que la possibilité de les modifier .
+Et pour finir vous aurrez access a la liste des tiers via leurs id 
 
 ## Les Annexes du guide :
-### Pour les Consommateurs :
+### Pour les Utilisateurs:
 
     - Accéder à la page de connexion
 
-![Image annexe](/Image/AnnexeVoirAnnonce.PNG)
+![Image annexe](/public/img/connexion.PNG)
 
-    - Accéder à la page de facturation
+    - Accéder à la page d'inscription
 
-![Image annexe](/Image/AnnexeAjoutPanier.PNG)
+![Image annexe](/public/img/Inscription.PNG)
    
-    - Accéder à son panier
+    - Accéder à la page d'accueil
 
-![Image annexe](/Image/VoirPanier.PNG)
+![Image annexe](/public/img/Accueil.PNG)
 
-    - Voici votre panier
+    -Liste de facturation
 
-![Immage annexe](/Image/DansLePanier.PNG)
+![Image annexe](/public/img/facture.PNG)
 
-### Pour les Producteurs :
+    -Liste des tiers presents
 
-    - Inscrivez-vous ou Connectez-vous si vous êtes déjà inscrit
-
-![Immage annexe](/Image/ProducteursInscription.PNG)
-
-    - Voici la page d'inscription , ajoutez vos identifiants
-
-![Immage annexe](/Image/Sinscrire.PNG)
-
-    - A présent connectez-vous pour devenir Producteur !
-
-![Immage annexe](/Image/Connexion.PNG)
-
-    - Accéder à la page de creation d'annonce   
-
-![Immage annexe](/Image/CreeAnnonce.PNG)
-
-    - Créer votre annonce !
-
-![Immage annexe](/Image/LacreationAnnonce.PNG)
-
-    - Vous pouvez modifier ou supprimer votre annonce via ces boutons
-
-![Immage annexe](/Image/GererlAnnonce.PNG)
-
-    - Modifiez votre annonce comme vous le souhaitez
-
-![Immage annexe](/Image/ModifAnnonce.PNG)
-
-
+![Image annexe](/public/img/tiers.PNG)
 
 
 ## Les Diagrammes de l'architecture
