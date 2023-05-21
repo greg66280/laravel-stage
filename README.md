@@ -43,7 +43,7 @@ Et pour finir vous aurrez access a la liste des tiers via leurs id
 
     -Liste de facturation
 
-![Image annexe](/public/img/facture.PNG)
+![Image annexe](/public/img/Facture.PNG)
 
     -Liste des tiers presents
 
