@@ -32,18 +32,8 @@ class PanelController extends Controller
                 array_push($filtredInvoices, $invoice);
             } 
         }
+        dd($filtredInvoices);
         return view("panel.tiers",compact("filtredInvoices"));
-    }
-
-    protected function panel_pdf_get() {
-        $invoices = $this->getInvoices();
-        $filtredInvoices = [];
-        foreach($invoices as $invoice) {
-            if (isset($invoice["lines"][0])) {
-                array_push($filtredInvoices, $invoice);
-            } 
-        }
-        return view("panel.pdf",compact("filtredInvoices"));
     }
 
     // Dolibarr functions

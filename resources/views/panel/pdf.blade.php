@@ -23,8 +23,7 @@
                     <td>Quantité</td>
                     <td>Tva</td>
                     <td>Prix Total</td>
-                    <td>Nom du tier</td>
-                    <td>Statut</td>
+                    <td>Status</td>
                 </tr>
             </thead>
 
@@ -38,25 +37,8 @@
                         <td>{{ $invoice["lines"][0]["qty"] }}</td>
                         <td>{{ $invoice["total_tva"]*1 }}</td>
                         <td>{{ $invoice["total_ttc"]*1 }}</td>
-                        <td>{{ $invoice["socid"] }}</td>
-                        
+                        <td>{{ \App\Models\User::getInvoiceStatus($invoice["status"]) }}</td>
 
-                        <td>
-                            <form method="POST" action="">
-                                @csrf
-                                @method("POST")
-                                <div class='dropdown'>
-                                    <button class='dropbtn'>{{ \App\Models\User::getInvoiceStatus($invoice["status"]) }}</button>
-                                    <div class='dropdown-content'>
-                                        <input type='hidden' name='id' value='{{ $invoice["id"] }}'>
-                                        <button type='submit' name='status' value='draft'>Brouillon</a>
-                                        <button type='submit' name="status" value='unpaid'>Impayée</a>
-                                        <button type='submit'  name="status" value='paid'>Payée</a>
-                                        
-                                    </div>
-                                </div>
-                            </form>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -68,13 +50,8 @@
             </a>
         </p>
         <p class="previous">
-            <a href="{{ route("panel_home_get") }}">
+            <a href="{{ route("panel_invoices_get") }}">
             <button>Précedent </button>
-            </a>
-        </p>
-        <p class="tiers">
-            <a href="{{ route("panel_tiers_get") }}">
-            <button>Vers les tiers </button>
             </a>
         </p>
     </div>
